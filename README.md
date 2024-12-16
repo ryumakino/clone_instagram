@@ -26,7 +26,7 @@ Este projeto é um clone básico do Instagram, desenvolvido com Ruby on Rails 6.
 
 - Ruby 2.6.0 ou superior
 - Rails 6.1
-- SQLite (ou qualquer banco de dados configurado)
+- PostgreSQL (ou outro banco de dados configurado)
 
 ### Passos para Rodar a Aplicação
 
