@@ -1,0 +1,21 @@
+{
+  "name": "clone-instagram",
+  "private": true,
+  "dependencies": {
+    "@rails/actioncable": "^6.0.0",
+    "@rails/actiontext": "^6.1.710",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.4.4",
+    "tingle.js": "^0.16.0",
+    "toastify-js": "^1.12.0",
+    "trix": "^1.2.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "webpack-dev-server": "^3"
+  }
+}

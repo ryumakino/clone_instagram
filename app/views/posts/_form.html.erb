@@ -1,0 +1,15 @@
+<%= form_with model: post, local: true, class: "new-post" do |form| %>
+  <h1>Novo post</h1>
+
+  <div class="field">
+    <%= form.file_field :photo %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :description, placeholder: "Descrição" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
