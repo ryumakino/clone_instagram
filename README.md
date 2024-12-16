@@ -61,3 +61,9 @@ Este projeto é um clone básico do Instagram, desenvolvido com Ruby on Rails 6.
    ```bash
    http://localhost:3000
 
+## Estrutura de Diretórios
+- **app/models**: Contém os modelos de dados, como Usuário, Post, Comentário e Curtida.
+- **app/controllers**: Controladores responsáveis pela lógica da aplicação.
+- **app/views**: Views utilizadas para renderizar as páginas.
+- **app/assets**: Arquivos estáticos, como CSS e JavaScript.
+- **config**: Arquivos de configuração do Rails.
