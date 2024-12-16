@@ -14,7 +14,6 @@ Este projeto é um clone básico do Instagram, desenvolvido com Ruby on Rails 6.
 ## Tecnologias
 
 - **Ruby on Rails 6.1**: Framework web utilizado para construir a aplicação.
-<<<<<<< HEAD
 - **PostgreSQL**: Banco de dados para persistência de dados.
 - **Puma**: Servidor da aplicação.
 - **Redis**: Utilizado para cache e background jobs.
