@@ -2,7 +2,8 @@ class LikesController < ApplicationController
   before_action :set_like, only: %i[destroy]
 
   def create
-    like = current_user.likes.build(like_params)
+    post = Post.find(params[:like][:post_id])
+    like = post.likes.create(user: current_user)
 
     if like.save
       render json: { successful: true, id: like.id }

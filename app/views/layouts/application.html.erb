@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
+  <body data-controller="flash-notifications" data-flash-messages="<%= flash.to_hash.to_json %>">
     <header>
       <div class="container">
         <nav>
@@ -28,7 +28,7 @@
 
         <nav class="actions">
           <%= link_to embedded_svg("plus.svg"), new_post_path %>
-          <%= link_to embedded_svg("user.svg"), "#", data: { modal_id: "user-actions" } %>
+          <%= link_to embedded_svg("user.svg"), "#", data: { controller: "modal", action: "click->modal#open", modal_id: "user-actions" } %>
         </nav>
       </div>
     </header>

@@ -1,50 +1,52 @@
-<article class="post">
-  <header>
-    <nav>
-      <%= user_avatar(post.created_by) %>
-      <h4><%= post.created_by.username %></h4>
-    </nav>
-
-    <nav class="actions">
-      <div class="action">
-        <%= embedded_svg "options.svg" %>
-      </div>
-    </nav>
-  </header>
-
-  <section class="image">
-    <%= image_tag post.photo %>
-  </section>
-
-  <div class="details">
-    <section class="actions">
+<%= turbo_frame_tag dom_id(post) do %>
+  <article class="post">
+    <header>
       <nav>
-        <%= render "likes/like", post: post %>
-
-        <div class="action">
-          <%= link_to post do %>
-            <%= embedded_svg "comment.svg" %>
-          <% end %>
-        </div>
-
-        <div class="action">
-          <%= embedded_svg "share.svg" %>
-        </div>
+        <%= user_avatar(post.created_by) %>
+        <h4><%= post.created_by.username %></h4>
       </nav>
 
-      <nav>
+      <nav class="actions">
         <div class="action">
-          <%= embedded_svg "save.svg" %>
+          <%= embedded_svg "options.svg" %>
         </div>
       </nav>
+    </header>
+
+    <section class="image">
+      <%= image_tag post.photo %>
     </section>
 
-    <section class="description">
-      <p><strong><%= post.created_by.username %></strong> <%= post.description %></p>
-    </section>
+    <div class="details">
+      <section class="actions">
+        <nav>
+          <%= render "likes/like", post: post %>
 
-    <section class="created-at">
-      <%= time_ago_in_words(post.created_at) %> atrás
-    </section>
-  </div>
-</article>
+          <div class="action">
+            <%= link_to post do %>
+              <%= embedded_svg "comment.svg" %>
+            <% end %>
+          </div>
+
+          <div class="action">
+            <%= embedded_svg "share.svg" %>
+          </div>
+        </nav>
+
+        <nav>
+          <div class="action">
+            <%= embedded_svg "save.svg" %>
+          </div>
+        </nav>
+      </section>
+
+      <section class="description">
+        <p><strong><%= post.created_by.username %></strong> <%= post.description %></p>
+      </section>
+
+      <section class="created-at">
+        <%= time_ago_in_words(post.created_at) %> atrás
+      </section>
+    </div>
+  </article>
+<% end %>

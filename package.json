@@ -2,6 +2,8 @@
   "name": "clone-instagram",
   "private": true,
   "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.12",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.1.710",
     "@rails/activestorage": "^6.0.0",

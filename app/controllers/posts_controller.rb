@@ -5,9 +5,6 @@ class PostsController < ApplicationController
   before_action :set_suggested_users, only: %i[index]
 
   def index
-    # flash.now[:notice] = "Deu certo!"
-    # flash.now[:alert] = "Boooo"
-
     @posts = Post.all.order(created_at: :desc)
   end
 
@@ -20,12 +17,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params.merge(created_by: current_user))
+    @post = current_user.posts.new(post_params)
 
     if @post.save
+      # Broadcasting via Turbo Stream
       PostChannel.broadcast_to "post_channel", post_created: render_to_string(partial: @post)
-
-      redirect_to @post, notice: 'Post foi criado com sucesso.'
+      respond_to do |format|
+        format.html { redirect_to @post, notice: "Post created successfully!" }
+        format.turbo_stream { render turbo_stream: turbo_stream.append("posts", @post) }
+      end
     else
       flash.now[:alert] = @post.errors.full_messages.to_sentence
       render :new

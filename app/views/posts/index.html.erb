@@ -1,9 +1,9 @@
 <main class="posts-page container">
-  <section class="posts">
+  <section class="posts" id="posts" data-turbo-action="replace">
     <% if @posts.any? %>
       <%= render @posts %>
     <% else %>
-      Nenhum post ainda.
+      <p>Nenhum post ainda.</p>
     <% end %>
   </section>
 
