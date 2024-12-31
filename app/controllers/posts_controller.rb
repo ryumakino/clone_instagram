@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       PostChannel.broadcast_to "post_channel", post_created: render_to_string(partial: @post)
       respond_to do |format|
         format.html { redirect_to @post, notice: "Post created successfully!" }
-        format.turbo_stream { render turbo_stream: turbo_stream.append("posts", @post) }
+        format.turbo_stream 
       end
     else
       flash.now[:alert] = @post.errors.full_messages.to_sentence

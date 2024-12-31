@@ -12,7 +12,7 @@
     <%= javascript_pack_tag 'authentication' %>
   </head>
 
-  <body data-flash-messages="<%= JSON.dump(flash.to_a) %>">
+  <body data-controller="flash-notifications" data-flash-messages="<%= flash.to_hash.to_json %>">
     <main>
       <section class="hero">
         <div class="logo">

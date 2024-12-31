@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
       # Respond with Turbo Stream to append the new comment to the page
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.append("comments", partial: "comments/comment", locals: { comment: @comment }) }
+        format.turbo_stream
         format.html { redirect_to @comment.post, notice: "Comentário enviado com sucesso." }
       end
     else

@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(post) do %>
+<div id="post_<%= post.id %>">
   <article class="post">
     <header>
       <nav>
@@ -49,4 +49,4 @@
       </section>
     </div>
   </article>
-<% end %>
+</div>

@@ -1,6 +1,7 @@
 <main class="posts-page container">
-  <section class="posts" id="posts" data-turbo-action="replace">
+  <section class="posts" id="posts">
     <% if @posts.any? %>
+      <%= turbo_stream_from "posts" %>
       <%= render @posts %>
     <% else %>
       <p>Nenhum post ainda.</p>

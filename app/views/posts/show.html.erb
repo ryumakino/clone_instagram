@@ -5,6 +5,8 @@
 
   <aside>
     <section class="comments" data-post-id="<%= @post.id %>">
+      <%= turbo_stream_from "comments_#{@post.id}" %>
+      
       <% if @post.comments.any? %>
         <%= render @post.comments.order(created_at: :desc) %>
       <% else %>
