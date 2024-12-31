@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       # Broadcasting via Turbo Stream
       PostChannel.broadcast_to "post_channel", post_created: render_to_string(partial: @post)
       respond_to do |format|
-        format.html { redirect_to @post, notice: "Post created successfully!" }
+        format.html { redirect_to @post, notice: "Post criado com sucesso!" }
         format.turbo_stream 
       end
     else
