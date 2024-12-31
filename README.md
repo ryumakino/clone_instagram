@@ -26,7 +26,7 @@ Este projeto é um clone básico do Instagram, desenvolvido com Ruby on Rails 6.
 
 - Ruby 2.6.0 ou superior
 - Rails 6.1
-- SQLite (ou qualquer banco de dados configurado)
+- PostgreSQL
 
 ### Passos para Rodar a Aplicação
 
@@ -68,7 +68,11 @@ Este projeto é um clone básico do Instagram, desenvolvido com Ruby on Rails 6.
 - **app/views**: Views utilizadas para renderizar as páginas.
 - **app/assets**: Arquivos estáticos, como CSS e JavaScript.
 - **config**: Arquivos de configuração do Rails.
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 4c0303834c81aeccf7ce33fe77aa373c39889c9a
 ## Gemas Utilizadas
 O projeto utiliza as seguintes gemas para fornecer funcionalidades essenciais:
 
@@ -79,4 +83,8 @@ O projeto utiliza as seguintes gemas para fornecer funcionalidades essenciais:
 - **image_processing**: Para manipulação e validação de imagens com Active Storage.
 - **redis**: Para caching e jobs em segundo plano.
 - **letter_opener**: Para visualização de emails durante o desenvolvimento.
+<<<<<<< HEAD
 - **bootsnap**: Acelera o tempo de inicialização
+=======
+- **bootsnap**: Acelera o tempo de inicialização
+>>>>>>> 4c0303834c81aeccf7ce33fe77aa373c39889c9a
