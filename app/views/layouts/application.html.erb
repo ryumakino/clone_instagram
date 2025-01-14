@@ -27,7 +27,9 @@
         </nav>
 
         <nav class="actions">
-          <%= link_to embedded_svg("plus.svg"), new_post_path %>
+          <%= link_to embedded_svg("plus.svg"), new_post_path, data: { turbo_frame: dom_id(Post.new) } %>
+          <%= turbo_frame_tag Post.new %>
+          
           <%= link_to embedded_svg("user.svg"), "#", data: { controller: "modal", action: "click->modal#open", modal_id: "user-actions" } %>
         </nav>
       </div>

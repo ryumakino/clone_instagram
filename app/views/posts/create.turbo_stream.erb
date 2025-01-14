@@ -1,3 +1,2 @@
-<%= turbo_stream.append "posts" do %>
-  <%= render @post %>
-<% end %>
+<%= turbo_stream.prepend "posts", @post %>
+<%= turbo_stream.update Post.new, "" %>

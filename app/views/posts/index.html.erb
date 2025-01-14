@@ -1,13 +1,14 @@
 <main class="posts-page container">
-  <section class="posts" id="posts">
-    <% if @posts.any? %>
-      <%= turbo_stream_from "posts" %>
-      <%= render @posts %>
-    <% else %>
-      <p>Nenhum post ainda.</p>
-    <% end %>
-  </section>
-
+  <%= turbo_frame_tag "posts" do %>
+    <section class="posts" id="posts">
+      <% if @posts.any? %>
+        <%= render @posts %>
+      <% else %>
+        <p>Nenhum post ainda.</p>
+      <% end %>
+    </section>
+  <% end %>
+  
   <aside>
     <%= render current_user %>
 
