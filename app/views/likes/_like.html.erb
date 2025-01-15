@@ -1,17 +1,16 @@
-<div class="action" 
-     data-post-id="<%= post.id %>"
-     data-like-id="<%= post.likes.find_by(user: current_user)&.id %>"
-     data-controller="like-dislike"
-     data-like-dislike-like-target="like"
-     data-like-dislike-dislike-target="dislike">
+<%= turbo_frame_tag "like_dislike_frame" do %>
+  <div class="action" 
+      data-post-id="<%= post.id %>"
+      data-like-id="<%= post.likes.find_by(user: current_user)&.id %>"
+      data-controller="like-dislike"
+      data-action="click->like-dislike#toggleLikeDislike">
 
-  <div class="like <%= post.liked_by?(current_user) ? "hidden" : "" %>" 
-       data-action="click->like-dislike#like">
-    <%= embedded_svg "like.svg" %>
-  </div>
+    <div class="like <%= post.liked_by?(current_user) ? "hidden" : "" %>">
+      <%= embedded_svg "like.svg" %>
+    </div>
 
-  <div class="dislike <%= post.liked_by?(current_user) ? "" : "hidden" %>" 
-       data-action="click->like-dislike#dislike">
-    <%= embedded_svg "liked.svg" %>
+    <div class="dislike <%= post.liked_by?(current_user) ? "" : "hidden" %>">
+      <%= embedded_svg "liked.svg" %>
+    </div>
   </div>
-</div>
+<% end %>

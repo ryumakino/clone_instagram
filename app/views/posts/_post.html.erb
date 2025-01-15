@@ -20,7 +20,8 @@
     <div class="details">
       <section class="actions">
         <nav>
-          <%= render "likes/like", post: post %>
+          <%= render "likes/like", post: post, data: { turbo_frame: "like_dislike_frame" } %>
+          <%= turbo_frame_tag "like_dislike_frame" %>
 
           <div class="action">
             <%= link_to post do %>
