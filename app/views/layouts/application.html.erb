@@ -12,6 +12,9 @@
   </head>
 
   <body data-controller="flash-notifications" data-flash-messages="<%= flash.to_json %>">
+    <%= turbo_stream_from 'flash_notifications' %>
+    <div id="flash-notifications"></div>
+
     <header>
       <div class="container">
         <nav>

@@ -3,21 +3,31 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
 
     if @comment.save
-      # Broadcasting to the comment_channel using Action Cable
+      # Broadcasting the new comment to the comment_channel using Action Cable
       CommentChannel.broadcast_to("comment_channel",
         post_id: @comment.post_id,
         comment_created: render_to_string(partial: "comments/comment", locals: { comment: @comment })
       )
 
-      # Respond with Turbo Stream to append the new comment to the page
+      # Set a flash message
+      flash[:notice] = "Comentário enviado com sucesso."
+
       respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to @comment.post, notice: "Comentário enviado com sucesso." }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append("comments", target: "comments", html: render_to_string(partial: "comments/comment", locals: { comment: @comment }))
+        end
+        format.html { redirect_to @comment.post, notice: flash[:notice] }
       end
     else
       @post = @comment.post
       flash.now[:alert] = @comment.errors.full_messages.to_sentence
-      render "posts/show"
+
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append("flash_notifications", target: "flash-notifications", html: "<p>#{flash.now[:alert]}</p>")
+        end
+        format.html { render "posts/show" }
+      end
     end
   end
 

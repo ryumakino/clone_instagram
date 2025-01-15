@@ -20,15 +20,26 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-      # Broadcasting via Turbo Stream
-      # PostChannel.broadcast_to "post_channel", post_created: render_to_string(partial: @post)
+      # Set flash notice and respond with Turbo Stream
+      flash[:notice] = "Post criado com sucesso!"
+      
       respond_to do |format|
-        format.html { redirect_to @post, notice: "Post criado com sucesso!" }
-        format.turbo_stream 
+        format.html { redirect_to @post, notice: flash[:notice] }
+        format.turbo_stream do
+          # Render Turbo Stream to append the new post to the posts list
+          render turbo_stream: turbo_stream.append("posts", target: "posts", html: render_to_string(partial: "posts/post", locals: { post: @post }))
+        end
       end
     else
       flash.now[:alert] = @post.errors.full_messages.to_sentence
-      render :new
+      
+      respond_to do |format|
+        format.html { render :new }
+        format.turbo_stream do
+          # Render Turbo Stream to show the flash alert message
+          render turbo_stream: turbo_stream.append("flash_notifications", target: "flash-notifications", html: "<p>#{flash.now[:alert]}</p>")
+        end
+      end
     end
   end
 
